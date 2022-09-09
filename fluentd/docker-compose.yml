@@ -5,25 +5,26 @@ services:
     container_name: 'fluentd1'
     image: fluentd:2022.08
     volumes:
-      - ../fluentd:/fluentd/etc
+      - .:/fluentd/etc
       - /Users/hwangsero/log/fluentd:/fluentd/log
+    working_dir: /fluentd/etc
     ports:
       - 9880:9880
     command:
       -c /fluentd/etc/fluentd1.conf
     privileged: true
 
-  fluentd2:
-    container_name: 'fluentd2'
-    image: fluentd:2022.08
-    volumes:
-      - ../fluentd:/fluentd/etc
-      - /Users/hwangsero/log/fluentd:/fluentd/log
-    ports:
-      - 24224:24224
-    command:
-      -c /fluentd/etc/fluentd2.conf
-    privileged: true
+#  fluentd2:
+#    container_name: 'fluentd2'
+#    image: fluentd:2022.08
+#    volumes:
+#      - ../fluentd:/fluentd/etc
+#      - /Users/hwangsero/log/fluentd:/fluentd/log
+#    ports:
+#      - 24224:24224
+#    command:
+#      -c /fluentd/etc/fluentd2.conf
+#    privileged: true
        
 networks:
   default:
